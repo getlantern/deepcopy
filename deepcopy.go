@@ -9,7 +9,6 @@ package deepcopy
 import (
 	"encoding/json"
 	"fmt"
-	"reflect"
 )
 
 // Make a deep copy from src into dst.
@@ -19,11 +18,6 @@ func Copy(dst interface{}, src interface{}) error {
 	}
 	if src == nil {
 		return fmt.Errorf("src cannot be nil")
-	}
-	srctype := reflect.TypeOf(src)
-	dsttype := reflect.TypeOf(dst)
-	if dsttype != dsttype {
-		return fmt.Errorf("Cannot copy %s into %s", srctype, dsttype)
 	}
 	bytes, err := json.Marshal(src)
 	if err != nil {
